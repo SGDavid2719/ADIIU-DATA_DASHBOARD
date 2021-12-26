@@ -1,0 +1,44 @@
+body {
+  font-family: "Palatino Linotype" !important;
+}
+
+#navigation-bar {
+  background-color: black;
+  opacity: 0.8;
+}
+
+#navigation-main {
+  display: flex;
+  align-items: center;
+}
+
+.navigation-main ul {
+  display: flex;
+  list-style: none;
+}
+
+.navigation-main ul li {
+  padding: 2px;
+}
+
+.navigation-main ul li a {
+  padding: 20px;
+}
+
+.navigation-main ul li a:hover {
+  border-bottom: 2px solid #fff;
+}
+
+.navigation-main ul.navigation-menu {
+  flex: 1;
+  margin-left: 20px;
+}
+
+a,
+#navigation-main h3 {
+  color: #ffffff;
+}
+
+.footer {
+  text-align: center;
+}
