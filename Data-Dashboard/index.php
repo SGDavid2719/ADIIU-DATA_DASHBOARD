@@ -15,25 +15,32 @@
 ?>
     <div id="container" class="m-4">
         <header id="containerHeader">
-            <h1>University Data Dashboard</h1>
+            <h1>Film Data Dashboard</h1>
             <h3>Modify this text</h3>
         </header>
         <section id="containerSection">
             <article id="containerArticle">
                 <div id="graphContainer">
-                    <div id="graph1">
-                        <figure class="highcharts-figure">
-                            <div id="graph1Container"></div>
-                            <p class="highcharts-description">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam, culpa?
-                            </p>
-                        </figure>
-                    </div>
-                    <div id="graph2">
-                        <p>Graph2</p>
-                    </div>
-                    <div id="graph3">
-                        <p>Graph3</p>
+                    <div cclass="row"> 
+                        <div id="graph1" class="col">
+                            <figure class="highcharts-figure">
+                                <div id="graph1Container"></div>
+                                <p class="highcharts-description">
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam, culpa?
+                                </p>
+                            </figure>
+                        </div>
+                        <div id="graph2" class="col">
+                            <figure class="highcharts-figure">
+                                <div id="graph2Container"></div>
+                                <p class="highcharts-description">
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam, culpa?
+                                </p>
+                            </figure>
+                        </div>
+                        <div id="graph3" class="col">
+                            <p>Graph3</p>
+                        </div>
                     </div>
                 </div>
             </article>

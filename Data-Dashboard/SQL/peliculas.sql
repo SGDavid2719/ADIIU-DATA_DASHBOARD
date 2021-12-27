@@ -1,7 +1,7 @@
-CREATE DATABASE peliculas;
-USE peliculas;
+CREATE DATABASE filmsDB;
+USE filmsDB;
 
-CREATE TABLE pelis
+CREATE TABLE films
 (
     idPeli int
     AUTO_INCREMENT,
@@ -13,7 +13,7 @@ CREATE TABLE pelis
 );
 
 
-    INSERT INTO pelis
+    INSERT INTO films
         (titulo, coste)
     VALUES
         ('Pirates of The Caribbean: On Stranger Tides', 379),
