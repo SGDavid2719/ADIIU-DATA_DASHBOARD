@@ -2,10 +2,12 @@
 
 if (!session_id()) session_start();
 
+$pDBName = (isset($_GET['dbname'])) ? $_GET['dbname'] : 'EMPTY!!!';
+
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "peliculas";
+$dbname = $pDBName;
 
 // Create connection
 $connection = mysqli_connect($servername, $username, $password, $dbname);
@@ -19,7 +21,7 @@ $pTable = (isset($_GET['table'])) ? $_GET['table'] : 'EMPTY!!!';
 $query="SELECT*FROM " . $pTable;
 $result=mysqli_query($connection, $query);
 
-$data = mysqli_fetch_array($result);
+$data = mysqli_fetch_array($result, NULL, PGSQL_ASSOC);
 $rows=mysqli_num_rows($result);
 $dataArray = array();
 if($rows) {
