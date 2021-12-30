@@ -21,7 +21,7 @@ $pTable = (isset($_GET['table'])) ? $_GET['table'] : 'EMPTY!!!';
 $query="SELECT*FROM " . $pTable;
 $result=mysqli_query($connection, $query);
 
-$data = mysqli_fetch_array($result, NULL, PGSQL_ASSOC);
+$data = mysqli_fetch_array($result, MYSQLI_ASSOC);
 $rows=mysqli_num_rows($result);
 $dataArray = array();
 if($rows) {

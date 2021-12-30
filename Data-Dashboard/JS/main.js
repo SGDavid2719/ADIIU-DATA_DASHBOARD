@@ -1,16 +1,18 @@
 $(document).ready(function () {
+  /* Gradient graphic colors */
+  GradientColors();
   /* Initialize graph 1 --> Basic Bar */
   InitGraphContainer1();
   /* Initialize graph 2 --> l */
   InitGraphContainer2();
   /* Initialize graph 3 -->  */
-  //InitGraphContainer3();
+  InitGraphContainer3();
   /* Initialize graph 4 --> Pie with gradient fill */
   InitGraphContainer4();
 });
 
 function GetData(pDBName, pTable) {
-  var lCleanBuffer = "<?php echo ob_clean(); ?>";
+  var lCleanBuffer = "<?php echo ob_clean();?>";
   var lData;
   $.ajax({
     type: "GET",
@@ -19,9 +21,29 @@ function GetData(pDBName, pTable) {
     async: false,
     success: function (lResult) {
       lData = lResult;
+      console.log(lData);
     },
   });
   return lData;
+}
+
+function GradientColors() {
+  // Radialize the colors
+  Highcharts.setOptions({
+    colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
+      return {
+        radialGradient: {
+          cx: 0.5,
+          cy: 0.3,
+          r: 0.7,
+        },
+        stops: [
+          [0, color],
+          [1, Highcharts.color(color).brighten(-0.3).get("rgb")], // darken
+        ],
+      };
+    }),
+  });
 }
 
 function InitGraphContainer1() {
@@ -94,7 +116,6 @@ function InitGraphContainer1() {
 function InitGraphContainer2() {
   var lJSON = GetData("filmsdb", "incomepergenre");
   var lDatos = JSON.parse(lJSON);
-  console.log(lDatos);
   var lTotalCost = 0;
   for (var lIndex = 0; lIndex < lDatos.length; lIndex++) {
     lTotalCost += parseInt(lDatos[lIndex]["income"]);
@@ -108,22 +129,6 @@ function InitGraphContainer2() {
     });
   }
   console.log(lDataArray);
-  // Radialize the colors
-  Highcharts.setOptions({
-    colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
-      return {
-        radialGradient: {
-          cx: 0.5,
-          cy: 0.3,
-          r: 0.7,
-        },
-        stops: [
-          [0, color],
-          [1, Highcharts.color(color).brighten(-0.3).get("rgb")], // darken
-        ],
-      };
-    }),
-  });
 
   // Build the chart
   Highcharts.chart("graph2Container", {
@@ -176,22 +181,6 @@ function InitGraphContainer3() {
     });
   }
   console.log(lDataArray);
-  // Radialize the colors
-  Highcharts.setOptions({
-    colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
-      return {
-        radialGradient: {
-          cx: 0.5,
-          cy: 0.3,
-          r: 0.7,
-        },
-        stops: [
-          [0, color],
-          [1, Highcharts.color(color).brighten(-0.3).get("rgb")], // darken
-        ],
-      };
-    }),
-  });
 
   // Build the chart
   Highcharts.chart("graph3Container", {
