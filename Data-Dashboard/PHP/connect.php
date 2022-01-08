@@ -1,39 +1,53 @@
 <?php
 
+// Starts session
 if (!session_id()) session_start();
 
+// Gets the posted data from Main.js (database name)
 $pDBName = (isset($_GET['dbname'])) ? $_GET['dbname'] : 'EMPTY!!!';
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = $pDBName;
+// DB variables
+$lServername = "localhost";
+$lUsername = "root";
+$lPassword = "";
+$lDBname = $pDBName;
 
 // Create connection
-$connection = mysqli_connect($servername, $username, $password, $dbname);
+$lConnection = mysqli_connect($lServername, $lUsername, $lPassword, $lDBname);
 // Check connection
-if ($connection->connect_error) {
-    die("Connection failed: " . $connection->connect_error);
+if ($lConnection->connect_error) {
+    die("Connection failed: " . $lConnection->connect_error);
 }
 
+// Gets the posted data from Main.js (table name)
 $pTable = (isset($_GET['table'])) ? $_GET['table'] : 'EMPTY!!!';
 
-$query="SELECT*FROM " . $pTable;
-$result=mysqli_query($connection, $query);
+// Selects data
+$lQuery="SELECT*FROM " . $pTable;
+// Tries the requested query
+$lResult=mysqli_query($lConnection, $lQuery);
 
-$data = mysqli_fetch_array($result, MYSQLI_ASSOC);
-$rows=mysqli_num_rows($result);
-$dataArray = array();
-if($rows) {
-    while($data != null) {
+// Fetches the first row
+$lData = mysqli_fetch_array($lResult, MYSQLI_ASSOC);
+// Fetches the number of rows
+$lRows=mysqli_num_rows($lResult);
+$lDataArray = array();
+// If there are data rows
+if($lRows) {
+    // Iterates over the rows
+    while($lData != null) {
         // Success
-        array_push($dataArray, $data);
-        $data = mysqli_fetch_array($result);
+        array_push($lDataArray, $lData);
+        // Fetches the next row
+        $lData = mysqli_fetch_array($lResult);
     }
-    print(json_encode($dataArray));
+    // Returns the array as a JSON
+    print(json_encode($lDataArray));
 } else {
     // Error
+    die("No data");
 }
-mysqli_free_result($result);
-mysqli_close($connection);
+// Ends connection
+mysqli_free_result($lResult);
+mysqli_close($lConnection);
 ?>

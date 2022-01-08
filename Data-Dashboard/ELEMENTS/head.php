@@ -1,5 +1,6 @@
 <?php
 
+// Start php session 
 if (!session_id()) session_start();
 
 ?>

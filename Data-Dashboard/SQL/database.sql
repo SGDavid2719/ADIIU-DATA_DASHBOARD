@@ -41,15 +41,15 @@ CREATE TABLE films
         INSERT INTO incomepergenre
             (genre, income)
         values
-            ('Aventura', 705),
-            ('Accion', 436),
-            ('Suspense', 264),
-            ('Terror', 247),
+            ('Adventure', 705),
+            ('Action', 436),
+            ('Thriller', 264),
+            ('Horror', 247),
             ('Drama', 241),
-            ('Comedia', 81),
-            ('Comedia negra', 44),
+            ('Comedy', 81),
+            ('Black comedy', 44),
             ('Musical', 11),
-            ('Comedia romantica', 7),
+            ('Romantic comedy', 7),
             ('Western', 5);
 
         CREATE DATABASE gamesDB;

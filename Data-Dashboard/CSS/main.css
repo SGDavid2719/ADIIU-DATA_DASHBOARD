@@ -1,8 +1,9 @@
+/* Palatino Linotype is a font family that does not produce confussion */
 body {
   font-family: "Palatino Linotype" !important;
 }
 
-#navigation-bar {
+#navigation-brand {
   background-color: black;
   opacity: 0.8;
 }
@@ -31,7 +32,8 @@ body {
 
 a,
 #navigation-main h3 {
-  color: #ffffff;
+  color: #ffffff !important;
+  text-decoration: none !important;
 }
 
 #container {

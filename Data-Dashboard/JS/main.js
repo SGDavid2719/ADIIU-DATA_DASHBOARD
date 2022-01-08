@@ -1,3 +1,4 @@
+// Uses JQuery and waits till the document is loaded
 $(document).ready(function () {
   /* Gradient graphic colors */
   GradientColors();
@@ -11,12 +12,20 @@ $(document).ready(function () {
   InitGraphContainer4();
 });
 
+// Function: Gets data from MySQL database. It uses ajax GET method and requests PHP/Connect.php.
+// In:
+//    - pDBName : database name (filmsdb or gamesdb)
+//    - pTable  : table name
+// Out:
+//    - lData   : fetched data as json array
 function GetData(pDBName, pTable) {
+  // It needs to clear browser buffer before sending data because it sends html tags too
+  // and we want just owr 'data' variable.
   var lCleanBuffer = "<?php echo ob_clean();?>";
   var lData;
   $.ajax({
     type: "GET",
-    url: "http://localhost/Data-Dashboard/ADIIU-DATA_DASHBOARD/Data-Dashboard/PHP/connect.php",
+    url: "http://localhost/Data-Dashboard/ADIIU-DATA_DASHBOARD/Data-Dashboard/PHP/Connect.php",
     data: { dbname: pDBName, table: pTable },
     async: false,
     success: function (lResult) {
@@ -27,6 +36,11 @@ function GetData(pDBName, pTable) {
   return lData;
 }
 
+// Function: Initialize graph colours. Highcharts' method.
+// In:
+//    -
+// Out:
+//    -
 function GradientColors() {
   // Radialize the colors
   Highcharts.setOptions({
@@ -46,17 +60,25 @@ function GradientColors() {
   });
 }
 
+// Function: Initialize graph1. It fetches data from films at filmsdb. It is a graph gradient bar.
+// In:
+//    -
+// Out:
+//    -
 function InitGraphContainer1() {
+  // Returns a JSON
   var lJSON = GetData("filmsdb", "films");
+  // JSON to array
   var lDatos = JSON.parse(lJSON);
   var lCategoriesArray = [];
   var lDataArray = [];
+  // Format owr array as Highchart it is required
   for (var lIndex = 0; lIndex < lDatos.length; lIndex++) {
     lCategoriesArray.push(lDatos[lIndex]["title"]);
     lDataArray.push(parseInt(lDatos[lIndex]["cost"]));
   }
 
-  Highcharts.chart("graph1Container", {
+  Highcharts.chart("graphOneContainer", {
     chart: {
       type: "bar",
     },
@@ -113,14 +135,23 @@ function InitGraphContainer1() {
   });
 }
 
+// Function: Initialize graph2. It fetches data from incomepergenre at filmsdb. It is a graph gradient pie.
+// In:
+//    -
+// Out:
+//    -
 function InitGraphContainer2() {
+  // Returns a JSON
   var lJSON = GetData("filmsdb", "incomepergenre");
+  // JSON to array
   var lDatos = JSON.parse(lJSON);
   var lTotalCost = 0;
+  // We get the total income
   for (var lIndex = 0; lIndex < lDatos.length; lIndex++) {
     lTotalCost += parseInt(lDatos[lIndex]["income"]);
   }
   var lDataArray = [];
+  // Format owr array as Highchart it is required. In this case a percentage is required
   for (var lIndex = 0; lIndex < lDatos.length; lIndex++) {
     lPercentage = (parseInt(lDatos[lIndex]["income"]) / lTotalCost) * 100;
     lDataArray.push({
@@ -131,7 +162,7 @@ function InitGraphContainer2() {
   console.log(lDataArray);
 
   // Build the chart
-  Highcharts.chart("graph2Container", {
+  Highcharts.chart("graphTwoContainer", {
     chart: {
       plotBackgroundColor: null,
       plotBorderWidth: null,
@@ -169,6 +200,11 @@ function InitGraphContainer2() {
   });
 }
 
+// Function: Initialize graph3. It fetches data from genre at gamesdb. It is a graph gradient bar.
+// In:
+//    -
+// Out:
+//    -
 function InitGraphContainer3() {
   var lJSON = GetData("gamesdb", "genre");
   var lDatos = JSON.parse(lJSON);
@@ -183,7 +219,7 @@ function InitGraphContainer3() {
   console.log(lDataArray);
 
   // Build the chart
-  Highcharts.chart("graph3Container", {
+  Highcharts.chart("graphThreeContainer", {
     chart: {
       plotBackgroundColor: null,
       plotBorderWidth: null,
@@ -191,7 +227,7 @@ function InitGraphContainer3() {
       type: "pie",
     },
     title: {
-      text: "Box office receipts for the top ten film genres in the United States and Canada in 2020",
+      text: "Video game sales in the United States in 2018, by genre",
     },
     tooltip: {
       pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>",
@@ -221,6 +257,11 @@ function InitGraphContainer3() {
   });
 }
 
+// Function: Initialize graph4. It fetches data from games at gamesdb. It is a graph gradient pie.
+// In:
+//    -
+// Out:
+//    -
 function InitGraphContainer4() {
   var lJSON = GetData("gamesdb", "games");
   var lDatos = JSON.parse(lJSON);
@@ -233,12 +274,12 @@ function InitGraphContainer4() {
   console.log(lCategoriesArray);
   console.log(lDataArray);
 
-  Highcharts.chart("graph4Container", {
+  Highcharts.chart("graphFourContainer", {
     chart: {
       type: "bar",
     },
     title: {
-      text: "Most expensive film productions worldwide as of September 2021",
+      text: "List of best-selling video games",
     },
     xAxis: {
       categories: lCategoriesArray,
