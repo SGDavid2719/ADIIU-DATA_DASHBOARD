@@ -1,0 +1,54 @@
+/* Palatino Linotype is a font family that does not produce confussion */
+body {
+  font-family: "Palatino Linotype" !important;
+}
+
+/* Sets the background of the navigation bar to black */
+#navigation-brand {
+  background-color: black;
+  opacity: 0.8;
+}
+
+/* Sets the display mode to flex, height to 80 px and centers all the elements at the center (height reference) */
+.navigation-main-class {
+  display: flex;
+  height: 80px;
+  align-items: center;
+}
+
+/* Hides the dots of the list elements */
+.navigation-main-class ul {
+  list-style: none;
+}
+
+/* Sets the list elements' padding at 10px */
+.navigation-main-class ul li a {
+  padding: 10px;
+}
+
+/* Shows the bottom border of a list element on hover */
+.navigation-main-class ul li a:hover {
+  border-bottom: 2px solid #fff;
+}
+
+/* An element can be modified 1 unit (flex-grow) */
+.navigation-main-class ul.navigation-menu {
+  flex: 1;
+}
+
+/* Shows the text with color white and sets the link decoration to none */
+a,
+#navigation-main h3 {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+/* Responsive height of the container */
+#container {
+  min-height: 85vh;
+}
+
+/* Centers the footer content to center */
+.footer {
+  text-align: center;
+}
