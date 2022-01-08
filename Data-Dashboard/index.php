@@ -3,7 +3,7 @@
     include_once('ELEMENTS/Head.php');
 ?>
 <!-- Highchart stylesheet -->
-<link rel="stylesheet" type="text/css" href="CSS/Graph.css" />
+<link rel="stylesheet" href="CSS/Graph.css" />
 <!-- Highcharts scripts -->
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
