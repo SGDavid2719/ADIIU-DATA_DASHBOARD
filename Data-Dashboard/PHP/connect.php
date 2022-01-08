@@ -4,7 +4,7 @@
 if (!session_id()) session_start();
 
 // Gets the posted data from Main.js (database name)
-$pDBName = (isset($_GET['dbname'])) ? $_GET['dbname'] : 'EMPTY!!!';
+$pDBName = (isset($_GET['dbname'])) ? $_GET['dbname'] : "EMPTY!!!";
 
 // DB variables
 $lServername = "localhost";
@@ -20,7 +20,7 @@ if ($lConnection->connect_error) {
 }
 
 // Gets the posted data from Main.js (table name)
-$pTable = (isset($_GET['table'])) ? $_GET['table'] : 'EMPTY!!!';
+$pTable = (isset($_GET['table'])) ? $_GET['table'] : "EMPTY!!!";
 
 // Selects data
 $lQuery="SELECT*FROM " . $pTable;
