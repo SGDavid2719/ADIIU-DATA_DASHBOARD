@@ -1,5 +1,5 @@
 <footer>
     <div id="pageFooter" class="footer">
-        &copy; 2021 David Santomé & Alejandro Torrente
+        &copy; 2022 David Santomé & Alejandro Torrente
     </div>
 </footer>
