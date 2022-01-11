@@ -45,7 +45,7 @@ if($lRows) {
     print(json_encode($lDataArray));
 } else {
     // Error
-    die("No data");
+    die("No data!");
 }
 // Ends connection
 mysqli_free_result($lResult);

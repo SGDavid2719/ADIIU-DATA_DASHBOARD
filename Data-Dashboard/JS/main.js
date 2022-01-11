@@ -170,7 +170,7 @@ function InitGraphContainer2() {
       type: "pie",
     },
     title: {
-      text: "Box office receipts for the top ten film genres in the United States and Canada in 2020",
+      text: "Box office receipts for the top ten film genres in the United States and Canada in 2020 ",
     },
     tooltip: {
       pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>",
