@@ -4,11 +4,11 @@ $(document).ready(function () {
   GradientColors();
   /* Initialize graph 1 --> Basic Bar */
   InitGraphContainer1();
-  /* Initialize graph 2 --> l */
+  /* Initialize graph 2 --> Pie with gradient fill */
   InitGraphContainer2();
   /* Initialize graph 3 -->  */
   InitGraphContainer3();
-  /* Initialize graph 4 --> Pie with gradient fill */
+  /* Initialize graph 4 --> */
   InitGraphContainer4();
 });
 
