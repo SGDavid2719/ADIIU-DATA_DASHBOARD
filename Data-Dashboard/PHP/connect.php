@@ -50,4 +50,5 @@ if($lRows) {
 // Ends connection
 mysqli_free_result($lResult);
 mysqli_close($lConnection);
+
 ?>

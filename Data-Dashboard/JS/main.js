@@ -30,7 +30,6 @@ function GetData(pDBName, pTable) {
     async: false,
     success: function (lResult) {
       lData = lResult;
-      console.log(lData);
     },
   });
   return lData;
@@ -159,7 +158,6 @@ function InitGraphContainer2() {
       y: lPercentage,
     });
   }
-  console.log(lDataArray);
 
   // Build the chart
   Highcharts.chart("graphTwoContainer", {
@@ -208,7 +206,6 @@ function InitGraphContainer2() {
 function InitGraphContainer3() {
   var lJSON = GetData("gamesdb", "genre");
   var lDatos = JSON.parse(lJSON);
-  console.log(lDatos);
   var lDataArray = [];
   for (var lIndex = 0; lIndex < lDatos.length; lIndex++) {
     lDataArray.push({
@@ -216,7 +213,6 @@ function InitGraphContainer3() {
       y: parseFloat(lDatos[lIndex]["percent"]),
     });
   }
-  console.log(lDataArray);
 
   // Build the chart
   Highcharts.chart("graphThreeContainer", {
@@ -271,8 +267,6 @@ function InitGraphContainer4() {
     lCategoriesArray.push(lDatos[lIndex]["title"]);
     lDataArray.push(parseInt(lDatos[lIndex]["sells"]));
   }
-  console.log(lCategoriesArray);
-  console.log(lDataArray);
 
   Highcharts.chart("graphFourContainer", {
     chart: {
